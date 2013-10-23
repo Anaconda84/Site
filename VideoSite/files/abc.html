@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script src="jquery.js"></script>
+  <script src="mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="mediaelementplayer.css" />
+</head>
+
+<body>
+<video width="320" height="240" controls="controls" preload="none">
+	<source type="video/mp4" src="MMM.mp4" />
+</video>
+</body>
+
+<script>
+    $('video').mediaelementplayer(/* Options */);
+
+//    debugger;
+//    var video = $('video')[0];
+//    video.addEventListener('error', function() {
+//          console.debug('video: error - '+video.error);
+//    });
+</script>
+
+
+</html>

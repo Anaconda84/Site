@@ -1,0 +1,3 @@
+2013-04-18 04:18:57,628 DEBUG VideoApp.views Error 404 aaaa, bbbbbb, ccccc, dddddd
+2013-04-18 04:18:57,631 DEBUG django.db.backends (0.001) SELECT COUNT(*) FROM "VideoApp_videobaza"; args=()
+2013-04-18 04:18:57,637 DEBUG django.db.backends (0.000) SELECT "VideoApp_videobaza"."id", "VideoApp_videobaza"."name", "VideoApp_videobaza"."description", "VideoApp_videobaza"."year", "VideoApp_videobaza"."register", "VideoApp_videobaza"."actors", "VideoApp_videobaza"."duration", "VideoApp_videobaza"."rating", "VideoApp_videobaza"."publication_date", "VideoApp_videobaza"."janr", "VideoApp_videobaza"."poster", "VideoApp_videobaza"."url", "VideoApp_videobaza"."torrent" FROM "VideoApp_videobaza" LIMIT 10; args=()

@@ -1,0 +1,68 @@
+<table border=0 >
+<tr valign="center">
+ <div class="pagination">
+    <span class="step-links">
+       {% if list.has_previous %}
+         <td>
+           <a href="?page={{ list.previous_page_number }}"><img id="previous" src="/static/images/previous.png"></a>
+         </td>  
+       {% endif %}
+                           
+       <span class="current">
+         <td>
+           <font color="#008000" size="5"><b>Страница {{ list.number }} из {{ list.paginator.num_pages }}.</b></font>
+         </td>
+       </span>
+                                                            
+       {% if list.has_next %}
+         <td>
+           <a href="?page={{ list.next_page_number }}"><img id="previous" src="/static/images/next.png"></a>
+         </td>
+       {% endif %}
+    </span>
+ </div> 
+</tr>
+</table>
+
+<table border=1>
+ {% for str in list %}
+ <tr>
+   <td> 
+      <a href="#{{ str.torrent }}" onclick="init('{{ str.url }}','{{ str.torrent }}');"><img id="{{ str.torrent }}" src="{{ str.poster }}"></a>
+   </td>
+   <td>
+      <table border=0> 
+      <tr><td align="center"><h2>{{ str.name }}</h2></td></tr>
+      <tr><td>{{ str.description }}</td></tr>
+      </table>
+   </td>
+
+ </tr>
+ {% endfor %}
+</table>
+
+<table border=0 >
+<tr valign="center">
+ <div class="pagination">
+    <span class="step-links">
+       {% if list.has_previous %}
+         <td>
+           <a href="?page={{ list.previous_page_number }}"><img id="previous" src="/static/images/previous.png"></a>
+         </td>  
+       {% endif %}
+                           
+       <span class="current">
+         <td>
+           <font color="#008000" size="5"><b>Страница {{ list.number }} из {{ list.paginator.num_pages }}.</b></font>
+         </td>
+       </span>
+                                                            
+       {% if list.has_next %}
+         <td>
+           <a href="?page={{ list.next_page_number }}"><img id="previous" src="/static/images/next.png"></a>
+         </td>
+       {% endif %}
+    </span>
+ </div> 
+</tr>
+</table>
