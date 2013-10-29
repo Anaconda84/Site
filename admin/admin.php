@@ -36,7 +36,7 @@
 <textarea name="actors" rows="2" cols="20" class="validate[required] text-input" ></textarea><br />
 <!-- ############################################################## -->
 <label for="janr">Жанр:</label>
-<select name="janr" id="janr" multiple="multiple" class="validate[required] text-input" >
+<select name="janr[]" id="janr" multiple="multiple" class="validate[required] text-input" >
   <option value="Фантастика">Фантастика</option>
   <option value="Боевик">Боевик</option>
   <option value="Мелодрама">Мелодрама</option>
@@ -64,6 +64,9 @@
   <option value="5" selected="selected">* * * * *</option>
 </select>
 <br />
+<input type="hidden" name="translit" id="translit" value="" />
+<input type="hidden" name="mp4" id="mp4" value="" />
+<input type="hidden" name="poster" id="poster" value="" />
 
 <input id="submit1" type="submit" name="submitButton" value="Добавить" disabled />
 </form>
@@ -111,6 +114,7 @@
 	    'onUploadSuccess' : function(file, data, response) {
 		$('#mp4_upload').uploadify('settings','buttonText','Loaded');
         	mp4_up = file.name;
+		$('input#mp4')[0].value = file.name;
 		check();
     	    },
     	    'onSWFReady' : function() {
@@ -131,6 +135,7 @@
 	    'onUploadSuccess' : function(file, data, response) {
 		$('#poster_upload').uploadify('settings','buttonText','Loaded');
         	poster_up = file.name;
+		$('input#poster')[0].value = file.name;
 		check();
     	    },
     	    'onSWFReady' : function() {

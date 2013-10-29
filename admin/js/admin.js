@@ -26,11 +26,11 @@ $(document).ready(function(){
 function showRequest(formData, jqForm, options) { 
     // formData - массив; здесь используется $.param чтобы преобразовать его в строку для вывода в alert(),
     // (только в демонстрационных целях), но в самом плагине jQuery Form это совершается автоматически.
-    var queryString = $.param(formData); 
+//    var queryString = $.param(formData); 
     // jqForm это jQuery объект, содержащий элементы формы.
     // Для доступа к элементам формы используйте 
     // var formElement = jqForm[0]; 
-    alert('Вот что мы передаем: \n\n' + queryString); 
+//    alert('Вот что мы передаем: \n\n' + queryString); 
     // здесь можно вернуть false чтобы запретить отправку формы; 
     // любое отличное от fals значение разрешит отправку формы.
     return true; 
@@ -47,9 +47,8 @@ function showResponse(responseText, statusText)  {
  
     // если применяется метод ajaxSubmit (или ajaxForm) с использованием опции dataType
     // установленной в 'json', первый аргумент - объек json, возвращенный сервером.
- 
-    alert('Статус ответа сервера: ' + statusText + '\n\nТекст ответа сервера: \n' + responseText + 
-        '\n\nЦелевой элемент div обновиться этим текстом.'); 
+//    alert('Статус ответа сервера: ' + statusText + '\n\nТекст ответа сервера: \n' + responseText + 
+//        '\n\nЦелевой элемент div обновиться этим текстом.'); 
 }
 
 /**
@@ -91,6 +90,7 @@ function check() {
     }
     if(mp4_up && poster_up && $('input#name')[0].value) {
 	var xmlhttp = getXmlHttp();
+	$('input#translit')[0].value = transliterate($('input#name')[0].value);
 	xmlhttp.open('POST', 'command.php?mp4='+mp4_up+'&poster='+poster_up+'&name='+transliterate($('input#name')[0].value), false);
 	xmlhttp.send();
 	if(xmlhttp.status == 200) {
