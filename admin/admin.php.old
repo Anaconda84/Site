@@ -14,24 +14,48 @@
 <link rel="stylesheet" type="text/css" href="css/uploadify.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+<script>
+function transliterate(word) {
+
+    var answer = "";
+
+    A = new Array();
+    A["Ё"]="YO";A["Й"]="I";A["Ц"]="TS";A["У"]="U";A["К"]="K";A["Е"]="E";A["Н"]="N";A["Г"]="G";A["Ш"]="SH";A["Щ"]="SCH";A["З"]="Z";A["Х"]="H";A["Ъ"]="_";
+    A["ё"]="yo";A["й"]="i";A["ц"]="ts";A["у"]="u";A["к"]="k";A["е"]="e";A["н"]="n";A["г"]="g";A["ш"]="sh";A["щ"]="sch";A["з"]="z";A["х"]="h";A["ъ"]="_";
+    A["Ф"]="F";A["Ы"]="I";A["В"]="V";A["А"]="A";A["П"]="P";A["Р"]="R";A["О"]="O";A["Л"]="L";A["Д"]="D";A["Ж"]="ZH";A["Э"]="E";
+    A["ф"]="f";A["ы"]="i";A["в"]="v";A["а"]="a";A["п"]="p";A["р"]="r";A["о"]="o";A["л"]="l";A["д"]="d";A["ж"]="zh";A["э"]="e";
+    A["Я"]="YA";A["Ч"]="CH";A["С"]="S";A["М"]="M";A["И"]="I";A["Т"]="T";A["Ь"]="_";A["Б"]="B";A["Ю"]="YU";
+    A["я"]="ya";A["ч"]="ch";A["с"]="s";A["м"]="m";A["и"]="i";A["т"]="t";A["ь"]="_";A["б"]="b";A["ю"]="yu";
+    A["\`"]="_";A["~"]="_";A["!"]="_";A["@"]="_";A["#"]="_";A["$"]="_";A["%"]="_";A["^"]="_";
+    A["&"]="_";A["*"]="_";A["("]="_";A[")"]="_";A["+"]="_";A["="]="_";A["\["]="_";
+    A["\]"]="_";A["\{"]="_";A["\}"]="_";A["\\"]="_";A["\|"]="_";A["\:"]="_";
+    A["\;"]="_";A["\""]="_";A["\'"]="_";A["\,"]="_";A["\."]="_";A["\/"]="_";
+    A["\<"]="_";A["\>"]="_";A["\?"]="_";A[" "]="_";
+
+    for (i in word) {
+
+      if (A[word[i]] === undefined) {
+        answer += word[i];
+      }
+      else {
+        answer += A[word[i]];
+      }
+    }
+    return answer;
+}
+
+</script>
 
 </head>
 <body>
 <!-- css и javascript-коды специально размещены непосредственно на странице. -->
 
 <div id="output">AJAX-ответ от сервера заменит этот текст.</div>
-
+<br />
 <form id="myForm" action="form.php" method="post">
-<input type="hidden" name="Hidden" value="hidden Value" /><br />
 <!-- ############################################################## -->
 <label for="name">Название фильма:</label>
-<input name="name" value="" type="text" class="validate[required] text-input" id="name" onchange="check()"/><br />
-<!-- ############################################################## -->
-<label for="mp4_upload">Выбор файла MP4:</label>
-<input id="mp4_upload" name="mp4_upload" type="file" onchange="check()"/><br />
-<!-- ############################################################## -->
-<label for="poster_upload">Выбор постера:</label>
-<input id="poster_upload" name="poster_upload" type="file" onchange="check()"/><br />
+<input name="name" value="" type="text" class="validate[required] text-input" id="name" onBlur="this.value=transliterate(this.value); check();"/><br />
 <!-- ############################################################## -->
 <label for="about">Описание фильма:</label>
 <textarea name="about" rows="2" cols="20" class="validate[required] text-input" ></textarea><br />
@@ -51,7 +75,7 @@
 </select><br />
 <!-- ############################################################## -->
 <label for="years">Год выхода:</label>
-<input value="гггг" name="years" id="years" type="text" maxlength="4" class="validate[required,custom[integer],min[1900]] text-input" /><br />
+<input value="гггг" name="years" id="years" type="text" maxlength="4" class="validate[required,custom[integer],min[1900]] text-input" onclick="this.value=''"/><br />
 <!-- ############################################################## -->
 <label for="hour">Длительность:</label>
 <select name="hour" id="hour" class="validate[required] text-input" >
@@ -69,29 +93,60 @@
   <option value="3">* * *</option>
   <option value="4">* * * *</option>
   <option value="5" selected="selected">* * * * *</option>
-</select><br />
+</select>
+<br />
 
-<input id="reset" type="reset" name="resetButton" value="Reset" />
-<input id="submit1" type="submit" name="submitButton" value="Submit1" />
-<input id="submit2" type="image" name="submitButton" value="Submit2" src="form.gif" />
+<input id="submit1" type="submit" name="submitButton" value="Добавить" disabled />
 </form>
 <br />
 
-<h1>Uploadify Demo</h1>
+<hr>
+
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;Загрузка файлов</h1>
 <form>
+    Загрузка MP4 файла:
     <div id="queue"></div>
-    <input id="file_upload" name="file_upload" type="file" multiple="true">
+    <input id="mp4_upload" name="file_upload_mp4" type="file" multiple="true">
 </form>
 
+<form>
+    Загрузка постера:
+    <div id="queue"></div>
+    <input id="poster_upload" name="file_upload_poster" type="file" multiple="true">
+</form>
 
+<hr>
+
+<iframe id="tracker" src="http://duroscope.ru:8888/room/new" width="0" height="0" >
+    Ваш браузер не поддерживает плавающие фреймы!
+</iframe>
 
 <script src="js/admin.js" type="text/javascript" charset="utf-8"></script>
 
 
 <script type="text/javascript">
     <?php $timestamp = time();?>
+    var mp4_up = false;
+    var poster_up = false;
     $(function() {
-	$('#file_upload').uploadify({
+	$('#mp4_upload').uploadify({
+	    'formData'     : {
+		'timestamp' : '<?php echo $timestamp;?>',
+		'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+	    },
+	    'fileTypeExts' : '*.gif; *.jpg; *.png; *.mp4',
+	    'fileSizeLimit' : '10GB',
+	    'swf'      : 'uploadify.swf',
+	    'uploader' : 'uploadify.php',
+	    'onUploadSuccess' : function(file, data, response) {
+		$('#mp4_upload').uploadify('settings','buttonText','Loaded');
+        	mp4_up = file.name;
+		check();
+    	    }
+	});
+    });
+    $(function() {
+	$('#poster_upload').uploadify({
 	    'formData'     : {
 		'timestamp' : '<?php echo $timestamp;?>',
 		'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
@@ -99,9 +154,15 @@
 	    'fileTypeExts' : '*.gif; *.jpg; *.png; *.mp4',
 	    'fileSizeLimit' : '10GB',
 	    'swf'      : 'uploadify.swf',
-	    'uploader' : 'uploadify.php'
+	    'uploader' : 'uploadify.php',
+	    'onUploadSuccess' : function(file, data, response) {
+		$('#poster_upload').uploadify('settings','buttonText','Loaded');
+        	poster_up = file.name;
+		check();
+    	    }
 	});
     });
+
 </script>
 
 

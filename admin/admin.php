@@ -20,12 +20,11 @@
 <!-- css и javascript-коды специально размещены непосредственно на странице. -->
 
 <div id="output">AJAX-ответ от сервера заменит этот текст.</div>
-
+<br />
 <form id="myForm" action="form.php" method="post">
-<input type="hidden" name="Hidden" value="hidden Value" /><br />
 <!-- ############################################################## -->
 <label for="name">Название фильма:</label>
-<input name="name" value="" type="text" class="validate[required] text-input" id="name" /><br />
+<input name="name" value="" type="text" class="validate[required] text-input" id="name" onBlur="check();" /><br />
 <!-- ############################################################## -->
 <label for="about">Описание фильма:</label>
 <textarea name="about" rows="2" cols="20" class="validate[required] text-input" ></textarea><br />
@@ -45,7 +44,7 @@
 </select><br />
 <!-- ############################################################## -->
 <label for="years">Год выхода:</label>
-<input value="гггг" name="years" id="years" type="text" maxlength="4" class="validate[required,custom[integer],min[1900]] text-input" /><br />
+<input value="гггг" name="years" id="years" type="text" maxlength="4" class="validate[required,custom[integer],min[1900]] text-input" onclick="this.value=''"/><br />
 <!-- ############################################################## -->
 <label for="hour">Длительность:</label>
 <select name="hour" id="hour" class="validate[required] text-input" >
@@ -63,15 +62,16 @@
   <option value="3">* * *</option>
   <option value="4">* * * *</option>
   <option value="5" selected="selected">* * * * *</option>
-</select><br />
+</select>
+<br />
 
-<input id="reset" type="reset" name="resetButton" value="Reset" />
-<input id="submit1" type="submit" name="submitButton" value="Submit1" />
-<input id="submit2" type="image" name="submitButton" value="Submit2" src="form.gif" />
+<input id="submit1" type="submit" name="submitButton" value="Добавить" disabled />
 </form>
 <br />
 
-<h1>Загрузка файлов</h1>
+<hr>
+
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;Загрузка файлов</h1>
 <form>
     Загрузка MP4 файла:
     <div id="queue"></div>
@@ -83,6 +83,8 @@
     <div id="queue"></div>
     <input id="poster_upload" name="file_upload_poster" type="file" multiple="true">
 </form>
+
+<hr>
 
 <iframe id="tracker" src="http://duroscope.ru:8888/room/new" width="0" height="0" >
     Ваш браузер не поддерживает плавающие фреймы!
@@ -105,9 +107,14 @@
 	    'fileSizeLimit' : '10GB',
 	    'swf'      : 'uploadify.swf',
 	    'uploader' : 'uploadify.php',
+	    'disable'  : 'true',
 	    'onUploadSuccess' : function(file, data, response) {
+		$('#mp4_upload').uploadify('settings','buttonText','Loaded');
         	mp4_up = file.name;
 		check();
+    	    },
+    	    'onSWFReady' : function() {
+		$('#mp4_upload').uploadify('disable', true);
     	    }
 	});
     });
@@ -122,8 +129,12 @@
 	    'swf'      : 'uploadify.swf',
 	    'uploader' : 'uploadify.php',
 	    'onUploadSuccess' : function(file, data, response) {
+		$('#poster_upload').uploadify('settings','buttonText','Loaded');
         	poster_up = file.name;
 		check();
+    	    },
+    	    'onSWFReady' : function() {
+		$('#poster_upload').uploadify('disable', true);
     	    }
 	});
     });
