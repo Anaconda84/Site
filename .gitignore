@@ -1,5 +1,5 @@
 *.pyc
 *.mp4
 *.webm
-uploads/*
+films/*
 

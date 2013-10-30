@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 // Define a destination
-$targetFolder = '/uploads'; // Relative to the root
+$targetFolder = '/films'; // Relative to the root
 
 $mp4 = $_GET['mp4'];
 $poster = $_GET['poster'];
@@ -26,6 +26,6 @@ rename($sourcePath.'/'.$mp4, $targetPath.'/'.$name.'.'.$ext);
 list($base, $ext) = split('\.', $poster);
 rename($sourcePath.'/'.$poster, $targetPath.'/'.$name.'.'.$ext);
 
-print 'Film: '.$name.' added.';
+print 'Film: '.$name.' uploaded to server.';
 ?>
 
