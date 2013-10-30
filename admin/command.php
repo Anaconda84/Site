@@ -23,8 +23,12 @@ if (file_exists($targetPath.'/'.$poster)) {
 
 list($base, $ext) = split('\.', $mp4);
 rename($sourcePath.'/'.$mp4, $targetPath.'/'.$name.'.'.$ext);
+
 list($base, $ext) = split('\.', $poster);
-rename($sourcePath.'/'.$poster, $targetPath.'/'.$name.'.'.$ext);
+rename($sourcePath.'/'.$poster, $poster);
+$output = shell_exec("/usr/bin/convert -resize 200x300 $poster temp.img");
+unlink($poster);
+rename('temp.img', $targetPath.'/'.$name.'.'.$ext);
 
 print 'Film: '.$name.' uploaded to server.';
 ?>
