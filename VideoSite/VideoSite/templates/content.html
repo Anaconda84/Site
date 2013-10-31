@@ -28,7 +28,7 @@
  {% for str in list %}
  <tr>
    <td> 
-      <a href="#{{ str.torrent }}" onclick="init('{{ str.url }}','{{ str.torrent }}');"><img id="{{ str.torrent }}" src="{{ str.poster }}"></a>
+      <a href="{{ film_tracker_url }}/room/{{ str.url }}" ><img src="{{ film_storage_url }}/{{ str.poster }}"></a>
    </td>
    <td>
       <table border=0> 

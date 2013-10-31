@@ -17,8 +17,8 @@ class VideoBaza(models.Model):
     janr5 = models.CharField(max_length=50, blank=True)
     poster = models.CharField(max_length=255)
     url = models.URLField()
-    torrent = models.CharField(max_length=255)
     cur_date = models.DateTimeField(auto_now_add=True, blank=True)
+    views = models.BigIntegerField()
     
     def __unicode__(self):
 	return self.name

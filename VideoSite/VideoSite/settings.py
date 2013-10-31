@@ -2,7 +2,7 @@ import os.path
 
 # Django settings for VideoSite project.
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 TEMPLATE_DEBUG = DEBUG
@@ -146,6 +146,9 @@ INSTALLED_APPS = (
     'VideoApp',
     #'debug_toolbar',
 )
+
+FILM_STORAGE_URL = 'http://duroscope.ru:6878'
+FILM_TRACKER_URL = 'http://duroscope.ru:8888'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
