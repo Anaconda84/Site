@@ -37,10 +37,37 @@
 <!-- ############################################################## -->
 <label for="janr">Жанр:</label>
 <select name="janr[]" id="janr" multiple="multiple" class="validate[required] text-input" >
-  <option value="Фантастика">Фантастика</option>
-  <option value="Боевик">Боевик</option>
-  <option value="Мелодрама">Мелодрама</option>
+  <option value="Авторское кино">Авторское кино</option>
+  <option value="Аниме">Аниме</option>
+  <option value="Артхаус">Артхаус</option>
+  <option value="Биографические">Биографические</option>
+  <option value="Боевики">Боевики</option>
+  <option value="Военные">Военные</option>
+  <option value="Детективы">Детективы</option>
+  <option value="Детские">Детские</option>
+  <option value="Документальные">Документальные</option>
+  <option value="Драмы">Драмы</option>
+  <option value="Исторические">Исторические</option>
+  <option value="Комедии">Комедии</option>
+  <option value="Концерты">Концерты</option>
+  <option value="Короткометражные">Короткометражные</option>
+  <option value="Криминальные">Криминальные</option>
+  <option value="Мелодрамы">Мелодрамы</option>
+  <option value="Мистика">Мистика</option>
+  <option value="Музыкальные">Музыкальные</option>
+  <option value="Мультфильмы">Мультфильмы</option>
+  <option value="Мюзиклы">Мюзиклы</option>
+  <option value="Отечественные">Отечественные</option>
+  <option value="Приключения">Приключения</option>
+  <option value="Семейные">Семейные</option>
+  <option value="Сериалы">Сериалы</option>
+  <option value="Спорт">Спорт</option>
+  <option value="ТВ-передачи">ТВ-передачи</option>
+  <option value="Триллеры">Триллеры</option>
   <option value="Ужасы">Ужасы</option>
+  <option value="Фантастика">Фантастика</option>
+  <option value="Фентези">Фентези</option>
+  <option value="Эротика">Эротика</option>
 </select><br />
 <!-- ############################################################## -->
 <label for="years">Год выхода:</label>
@@ -67,9 +94,12 @@
 <input type="hidden" name="translit" id="translit" value="" />
 <input type="hidden" name="mp4" id="mp4" value="" />
 <input type="hidden" name="poster" id="poster" value="" />
+<label name="url" id="url"></label>
+<br />
 
 <input id="submit1" type="submit" name="submitButton" value="Добавить" disabled />
 </form>
+
 <br />
 
 <hr>
@@ -88,10 +118,13 @@
 </form>
 
 <hr>
-
-<iframe id="tracker" src="http://duroscope.ru:8888/room/new" width="0" height="0" >
+<br />
+<input id="next" type="button" value="Дальше -->" onclick="window.location = 'http://duroskop.net:8888/room/new?url='+$('label#url')[0].innerText;">
+<!--
+<iframe id="tracker" src="http://duroskop.net:8888/room/new" width="0" height="0" >
     Ваш браузер не поддерживает плавающие фреймы!
 </iframe>
+-->
 
 <script src="js/admin.js" type="text/javascript" charset="utf-8"></script>
 

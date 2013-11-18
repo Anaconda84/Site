@@ -77,3 +77,14 @@ br {
   width:70px;
 }
 
+#url {
+  font-size: 14pt;
+  color: red;
+  font-weight:bold;
+}
+
+#next {
+  width:87px;
+  height:40px;
+  margin-left:20px;
+}

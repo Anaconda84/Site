@@ -1,13 +1,6 @@
 <?php
 
-header('Content-type: image/jpeg');
-
-$image = new Imagick('image.jpg');
-
-// Если в качестве ширины или высоты передан 0,
-// то сохраняется соотношение сторон
-$image->thumbnailImage(100, 0);
-
-echo $image;
-
+    // Создадим новую базу данных 
+    $db = new SQLite3('../VideoSite/videobaza.db');
+    // Запишем что-нибудь в таблицу 
 ?>

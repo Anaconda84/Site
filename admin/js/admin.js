@@ -90,6 +90,8 @@ function check() {
 	$('#poster_upload').uploadify('disable', false);
     }
     if(mp4_up && poster_up && $('input#name')[0].value) {
+	var trans_lit = transliterate($('input#name')[0].value);
+	$('label#url')[0].textContent = 'http://duroskop.net:6878/'+trans_lit+'/'+trans_lit+'.'+mp4_up.split('.')[1];
 	var xmlhttp = getXmlHttp();
 	$('input#translit')[0].value = transliterate($('input#name')[0].value);
 	xmlhttp.open('POST', 'command.php?mp4='+mp4_up+'&poster='+poster_up+'&name='+transliterate($('input#name')[0].value), false);
@@ -97,8 +99,8 @@ function check() {
 	if(xmlhttp.status == 200) {
 //	    alert('response='+xmlhttp.responseText);
 	    $('#output')[0].textContent = xmlhttp.responseText;
-	    $('#tracker')[0].width = 800;
-	    $('#tracker')[0].height = 200;
+//	    $('#tracker')[0].width = 800;
+//	    $('#tracker')[0].height = 200;
             $('input#submit1')[0].disabled = false;
 	}
 	mp4_up = null;
@@ -117,8 +119,8 @@ function transliterate(word) {
     A["ё"]="yo";A["й"]="i";A["ц"]="ts";A["у"]="u";A["к"]="k";A["е"]="e";A["н"]="n";A["г"]="g";A["ш"]="sh";A["щ"]="sch";A["з"]="z";A["х"]="h";A["ъ"]="";
     A["Ф"]="F";A["Ы"]="I";A["В"]="V";A["А"]="A";A["П"]="P";A["Р"]="R";A["О"]="O";A["Л"]="L";A["Д"]="D";A["Ж"]="ZH";A["Э"]="E";
     A["ф"]="f";A["ы"]="i";A["в"]="v";A["а"]="a";A["п"]="p";A["р"]="r";A["о"]="o";A["л"]="l";A["д"]="d";A["ж"]="zh";A["э"]="e";
-    A["Я"]="YA";A["Ч"]="CH";A["С"]="S";A["М"]="M";A["И"]="I";A["Т"]="T";A["Ь"]="_";A["Б"]="B";A["Ю"]="YU";
-    A["я"]="ya";A["ч"]="ch";A["с"]="s";A["м"]="m";A["и"]="i";A["т"]="t";A["ь"]="_";A["б"]="b";A["ю"]="yu";
+    A["Я"]="YA";A["Ч"]="CH";A["С"]="S";A["М"]="M";A["И"]="I";A["Т"]="T";A["Ь"]="";A["Б"]="B";A["Ю"]="YU";
+    A["я"]="ya";A["ч"]="ch";A["с"]="s";A["м"]="m";A["и"]="i";A["т"]="t";A["ь"]="";A["б"]="b";A["ю"]="yu";
     A["\`"]="";A["~"]="";A["!"]="";A["@"]="";A["#"]="";A["$"]="";A["%"]="";A["^"]="";
     A["&"]="";A["*"]="";A["("]="";A[")"]="";A["+"]="";A["="]="";A["\["]="";
     A["\]"]="";A["\{"]="";A["\}"]="";A["\\"]="";A["\|"]="";A["\:"]="";

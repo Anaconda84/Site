@@ -3,9 +3,24 @@ header('Content-Type: text/html; charset=utf-8');
 if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     $time = date("H:i:s d/m/Y", time());
 
-//    $fp = fopen("/tmp/counter.txt", "a");
-//    fwrite($fp, var_dump($_POST));
-//    fclose($fp);
+    $fp = fopen("/tmp/counter.txt", "a");
+    fwrite($fp, 'name='.$_POST['name']."\n");
+    fwrite($fp, 'about='.$_POST['about']."\n");
+    fwrite($fp, 'years='.$_POST['years']."\n");
+    fwrite($fp, 'register='.$_POST['register']."\n");
+    fwrite($fp, 'actors='.$_POST['actors']."\n");
+    fwrite($fp, 'hour='.$_POST['hour']."\n");
+    fwrite($fp, 'min='.$_POST['min']."\n");
+    fwrite($fp, 'rating='.$_POST['rating']."\n");
+    fwrite($fp, 'janr1='.$_POST['janr'][0]."\n");
+    fwrite($fp, 'janr2='.$_POST['janr'][1]."\n");
+    fwrite($fp, 'janr3='.$_POST['janr'][2]."\n");
+    fwrite($fp, 'janr4='.$_POST['janr'][3]."\n");
+    fwrite($fp, 'janr5='.$_POST['janr'][4]."\n");
+    fwrite($fp, 'mp4='.$_POST['mp4']."\n");
+    fwrite($fp, 'poster='.$_POST['poster']."\n");
+    fwrite($fp, 'translit='.$_POST['translit']."\n-------------------------------------------------\n");
+    fclose($fp);
 
 
     // Создадим новую базу данных 

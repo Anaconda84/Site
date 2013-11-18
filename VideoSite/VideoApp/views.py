@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from VideoApp.models import VideoBaza
-from VideoApp.utils import *
+#from VideoApp.utils import *
 from VideoSite.settings import FILM_STORAGE_URL
 from VideoSite.settings import FILM_TRACKER_URL
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger

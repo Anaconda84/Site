@@ -147,8 +147,8 @@ INSTALLED_APPS = (
     #'debug_toolbar',
 )
 
-FILM_STORAGE_URL = 'http://duroscope.ru:6878'
-FILM_TRACKER_URL = 'http://duroscope.ru:8888'
+FILM_STORAGE_URL = 'http://duroskop.net:6878'
+FILM_TRACKER_URL = 'http://duroskop.net:8888'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

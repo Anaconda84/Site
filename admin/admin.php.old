@@ -14,37 +14,6 @@
 <link rel="stylesheet" type="text/css" href="css/uploadify.css">
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
-<script>
-function transliterate(word) {
-
-    var answer = "";
-
-    A = new Array();
-    A["Ё"]="YO";A["Й"]="I";A["Ц"]="TS";A["У"]="U";A["К"]="K";A["Е"]="E";A["Н"]="N";A["Г"]="G";A["Ш"]="SH";A["Щ"]="SCH";A["З"]="Z";A["Х"]="H";A["Ъ"]="_";
-    A["ё"]="yo";A["й"]="i";A["ц"]="ts";A["у"]="u";A["к"]="k";A["е"]="e";A["н"]="n";A["г"]="g";A["ш"]="sh";A["щ"]="sch";A["з"]="z";A["х"]="h";A["ъ"]="_";
-    A["Ф"]="F";A["Ы"]="I";A["В"]="V";A["А"]="A";A["П"]="P";A["Р"]="R";A["О"]="O";A["Л"]="L";A["Д"]="D";A["Ж"]="ZH";A["Э"]="E";
-    A["ф"]="f";A["ы"]="i";A["в"]="v";A["а"]="a";A["п"]="p";A["р"]="r";A["о"]="o";A["л"]="l";A["д"]="d";A["ж"]="zh";A["э"]="e";
-    A["Я"]="YA";A["Ч"]="CH";A["С"]="S";A["М"]="M";A["И"]="I";A["Т"]="T";A["Ь"]="_";A["Б"]="B";A["Ю"]="YU";
-    A["я"]="ya";A["ч"]="ch";A["с"]="s";A["м"]="m";A["и"]="i";A["т"]="t";A["ь"]="_";A["б"]="b";A["ю"]="yu";
-    A["\`"]="_";A["~"]="_";A["!"]="_";A["@"]="_";A["#"]="_";A["$"]="_";A["%"]="_";A["^"]="_";
-    A["&"]="_";A["*"]="_";A["("]="_";A[")"]="_";A["+"]="_";A["="]="_";A["\["]="_";
-    A["\]"]="_";A["\{"]="_";A["\}"]="_";A["\\"]="_";A["\|"]="_";A["\:"]="_";
-    A["\;"]="_";A["\""]="_";A["\'"]="_";A["\,"]="_";A["\."]="_";A["\/"]="_";
-    A["\<"]="_";A["\>"]="_";A["\?"]="_";A[" "]="_";
-
-    for (i in word) {
-
-      if (A[word[i]] === undefined) {
-        answer += word[i];
-      }
-      else {
-        answer += A[word[i]];
-      }
-    }
-    return answer;
-}
-
-</script>
 
 </head>
 <body>
@@ -55,7 +24,7 @@ function transliterate(word) {
 <form id="myForm" action="form.php" method="post">
 <!-- ############################################################## -->
 <label for="name">Название фильма:</label>
-<input name="name" value="" type="text" class="validate[required] text-input" id="name" onBlur="this.value=transliterate(this.value); check();"/><br />
+<input name="name" value="" type="text" class="validate[required] text-input" id="name" onBlur="check();" /><br />
 <!-- ############################################################## -->
 <label for="about">Описание фильма:</label>
 <textarea name="about" rows="2" cols="20" class="validate[required] text-input" ></textarea><br />
@@ -67,11 +36,38 @@ function transliterate(word) {
 <textarea name="actors" rows="2" cols="20" class="validate[required] text-input" ></textarea><br />
 <!-- ############################################################## -->
 <label for="janr">Жанр:</label>
-<select name="janr" id="janr" multiple="multiple" class="validate[required] text-input" >
-  <option value="Фантастика">Фантастика</option>
-  <option value="Боевик">Боевик</option>
-  <option value="Мелодрама">Мелодрама</option>
+<select name="janr[]" id="janr" multiple="multiple" class="validate[required] text-input" >
+  <option value="Авторское кино">Авторское кино</option>
+  <option value="Аниме">Аниме</option>
+  <option value="Артхаус">Артхаус</option>
+  <option value="Биографические">Биографические</option>
+  <option value="Боевики">Боевики</option>
+  <option value="Военные">Военные</option>
+  <option value="Детективы">Детективы</option>
+  <option value="Детские">Детские</option>
+  <option value="Документальные">Документальные</option>
+  <option value="Драмы">Драмы</option>
+  <option value="Исторические">Исторические</option>
+  <option value="Комедии">Комедии</option>
+  <option value="Концерты">Концерты</option>
+  <option value="Короткометражные">Короткометражные</option>
+  <option value="Криминальные">Криминальные</option>
+  <option value="Мелодрамы">Мелодрамы</option>
+  <option value="Мистика">Мистика</option>
+  <option value="Музыкальные">Музыкальные</option>
+  <option value="Мультфильмы">Мультфильмы</option>
+  <option value="Мюзиклы">Мюзиклы</option>
+  <option value="Отечественные">Отечественные</option>
+  <option value="Приключения">Приключения</option>
+  <option value="Семейные">Семейные</option>
+  <option value="Сериалы">Сериалы</option>
+  <option value="Спорт">Спорт</option>
+  <option value="ТВ-передачи">ТВ-передачи</option>
+  <option value="Триллеры">Триллеры</option>
   <option value="Ужасы">Ужасы</option>
+  <option value="Фантастика">Фантастика</option>
+  <option value="Фентези">Фентези</option>
+  <option value="Эротика">Эротика</option>
 </select><br />
 <!-- ############################################################## -->
 <label for="years">Год выхода:</label>
@@ -95,6 +91,11 @@ function transliterate(word) {
   <option value="5" selected="selected">* * * * *</option>
 </select>
 <br />
+<input type="hidden" name="translit" id="translit" value="" />
+<input type="hidden" name="mp4" id="mp4" value="" />
+<input type="hidden" name="poster" id="poster" value="" />
+<label name="url" id="url"></label>
+<br />
 
 <input id="submit1" type="submit" name="submitButton" value="Добавить" disabled />
 </form>
@@ -117,7 +118,7 @@ function transliterate(word) {
 
 <hr>
 
-<iframe id="tracker" src="http://duroscope.ru:8888/room/new" width="0" height="0" >
+<iframe id="tracker" src="http://duroskop.net:8888/room/new" width="0" height="0" >
     Ваш браузер не поддерживает плавающие фреймы!
 </iframe>
 
@@ -138,10 +139,15 @@ function transliterate(word) {
 	    'fileSizeLimit' : '10GB',
 	    'swf'      : 'uploadify.swf',
 	    'uploader' : 'uploadify.php',
+	    'disable'  : 'true',
 	    'onUploadSuccess' : function(file, data, response) {
 		$('#mp4_upload').uploadify('settings','buttonText','Loaded');
         	mp4_up = file.name;
+		$('input#mp4')[0].value = file.name;
 		check();
+    	    },
+    	    'onSWFReady' : function() {
+		$('#mp4_upload').uploadify('disable', true);
     	    }
 	});
     });
@@ -158,7 +164,11 @@ function transliterate(word) {
 	    'onUploadSuccess' : function(file, data, response) {
 		$('#poster_upload').uploadify('settings','buttonText','Loaded');
         	poster_up = file.name;
+		$('input#poster')[0].value = file.name;
 		check();
+    	    },
+    	    'onSWFReady' : function() {
+		$('#poster_upload').uploadify('disable', true);
     	    }
 	});
     });
